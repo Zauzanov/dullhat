@@ -10,7 +10,7 @@ python dullhat.py --help
 
 #WARNING!
 # flags for listeners(server) only: -c, -e, -u, -l
-# flags for senders(client): -t, -p. 
+# flags for senders(client): -t, -p 
 ```
 ## 2. Upload files to the server:
 ```bash
