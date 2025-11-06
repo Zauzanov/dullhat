@@ -112,6 +112,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.listen:
         buffer = ''
+    elif sys.stdin.isatty():
+        buffer = ''
     else:
         buffer = sys.stdin.read()
     
