@@ -26,7 +26,7 @@ On the server(Terminal 1):
 python dullhat.py -t 192.168.204.139 -p 1234 -l -c         
 
 # On your own client machine(Terminal 2):
-python dullhat.py -t 192.168.204.139 -p 1234           # then press CTRL+D                            
+python dullhat.py -t 192.168.204.139 -p 1234                            
 ```
 ## 4. Command execution:
 ``` bash
@@ -34,7 +34,7 @@ python dullhat.py -t 192.168.204.139 -p 1234           # then press CTRL+D
 python dullhat.py -t 192.168.204.139 -p 1234 -l -e="cat /etc/passwd"
 
 # On the client:
-python dullhat.py -t 192.168.204.139 -p 1234           # CTRL+D and you get the /etc/passwd content.
+python dullhat.py -t 192.168.204.139 -p 1234
 ```
 ## 5. Sending requests:
 ```bash
