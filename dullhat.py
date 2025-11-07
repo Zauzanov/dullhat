@@ -6,26 +6,28 @@ import sys
 import textwrap
 import threading
 
+# takes a command string 
 def execute(cmd):
     cmd = cmd.strip()
     if not cmd:
         return 
-    output = subprocess.check_output(shlex.split(cmd), stderr=subprocess.STDOUT)
+    output = subprocess.check_output(shlex.split(cmd), stderr=subprocess.STDOUT)           # tokenizes the command into a list 
     return output.decode()
 
+# works as a client and a server
 class dullhat:
     def __init__(self, args, buffer=None):
         self.args = args
         self.buffer = buffer
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    
+    # decides whether to run as a listener or a sender
     def run(self):
         if self.args.listen:
             self.listen()
         else:
             self.send()
-
+    # handles client mode
     def send(self):
         self.socket.connect((self.args.target, self.args.port))
         if self.buffer:
@@ -50,7 +52,7 @@ class dullhat:
             print('User terminated.')
             self.socket.close()
             sys.exit()
-
+    # acts as a listening server - server mode
     def listen(self):
         self.socket.bind((self.args.target, self.args.port))
         self.socket.listen(5)
@@ -58,7 +60,7 @@ class dullhat:
             client_socket, _= self.socket.accept()
             client_thread = threading.Thread(target=self.handle, args=(client_socket,))
             client_thread.start()
-
+    # logic for interacting - execute, upload or command
     def handle(self, client_socket):
         if self.args.execute:
             output = execute(self.args.execute)
@@ -112,7 +114,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.listen:
         buffer = ''
-    elif sys.stdin.isatty():
+    elif sys.stdin.isatty():                                                                # allows to avoid the need for CTRL+D
         buffer = ''
     else:
         buffer = sys.stdin.read()
