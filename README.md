@@ -83,7 +83,8 @@ Login with msfadmin/msfadmin to get started
 
 ```
 
-## 6.  Let's bundle it into a single executable file:
+## 6.  Let's bundle it into a single executable file that can be run without having Python or any external package installed:
 ```bash
-pyinstaller -F dullhat.py
+pyinstaller -F dullhat.py 
 ```
+`-F` flag forces everything — code, all required modules, dependencies and built-in Python interpreter — into 1 standalone file.
