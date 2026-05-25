@@ -2,6 +2,8 @@
   <h1 align="center"> dullhat Net Tool </h1>
 </p>
 
+My custom alternative to `netcat`
+
 ## 🚀 Quick Start
 ## 1. Download 'dullhat.py' file and run it like this to open the helper:
 ```bash
@@ -79,4 +81,9 @@ Login with msfadmin/msfadmin to get started
 </body>
 </html>
 
+```
+
+## 6.  Let's bundle it into a single executable file:
+```bash
+pyinstaller -F dullhat.py
 ```
